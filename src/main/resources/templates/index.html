@@ -1,24 +1,118 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>Lunar to Gregorian Converter</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<link rel="stylesheet" type="text/css"
-  href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" />
 
-<link rel="stylesheet" th:href="@{/css/main.css}"
-  href="../../css/main.css" />
+    <title>Lunar to Gregorian Date Converter</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="accordion">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                Lunar Birthdate to Gregorian Birthday
+              </button>
+            </h5>
+          </div>
 
-</head>
-<body>
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+              <form id="birthday-form">
+                <h6>Given a lunar birthdate, calculate one or more Gregorian birthdays.</h6>
+                <br/>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Month</span>
+                  </div>
+                  <select id="lunarMonth" name="lunarMonth" class="form-control" aria-describedby="basic-addon3">
+                    <option value="0">Choose</option>
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                  </select>
+                </div>
 
-  <div class="container">
-    <p>Hello</p>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Day</span>
+                  </div>
+                  <input type="number" id="lunarDay" name="lunarDay" min="1" max="31" class="form-control" aria-describedby="basic-addon3" />
+                </div>
+
+                <fieldset>
+                  <legend><h6>Year</h6></legend>
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">One Year</span>
+                    </div>
+                    <input type="number" id="year" name="year" min="1900" max="2100" class="form-control" placeholder="Year" aria-label="Year" aria-describedby="basic-addon1"/>
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="allYears" />
+                      <label class="form-check-label" for="allYears">All Years (Until 2100)</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+              <button id="birthday-submit" class="btn btn-primary">Submit</button>
+              <div id="birthday-result"></div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Gregorian Date to Lunar Date
+              </button>
+            </h5>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" id="headingThree">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                Lunar Date to Gregorian Date
+              </button>
+            </h5>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+            <div class="card-body">
+              Stuff
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 
-  <script type="text/javascript"
-    src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-</body>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script th:src="@{/js/main.js}"></script>
+  </body>
 </html>
