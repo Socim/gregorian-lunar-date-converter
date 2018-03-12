@@ -13,9 +13,9 @@ var Birthday = {
     var currentMonth = (new Date()).getMonth() + 1;
     var currentDay = (new Date()).getDate();
 
-    $("#year").val(currentYear);
-    $("#lunarMonth").val(currentMonth);
-    $("#lunarDay").val(currentDay);
+    $('[name="year"]').val(currentYear);
+    $('[name="month"]').val(currentMonth);
+    $('[name="day"]').val(currentDay);
 
     $("#birthday-submit").click(function() {
       Birthday.submit();
@@ -25,7 +25,8 @@ var Birthday = {
   submit: function() {
     $.get("/birthday", $('#birthday-form').serialize())
       .done(function(data){
-        $("#birthday-result").html(data);
+        $("#single-birthday-result .result").html(data);
+        $("#single-birthday-result").slideDown("slow", function() { });
       });
   }
 
