@@ -14,7 +14,7 @@
   <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
       <a class="navbar-brand" href="#">MoonBirthday.info</a>
-      <span class="desc">Finding gregorian birthdays for lunar birthdates.</span>
+      <span class="desc">Find gregorian birthdays for lunar birthdates.</span>
     </nav>
 
     <main role="main" class="container">
@@ -63,25 +63,26 @@
                       <input type="number" name="day" min="1" max="31" class="form-control" aria-describedby="basic-addon3" />
                     </div>
 
-                    <fieldset>
-                      <legend><h6>Year</h6></legend>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="birthdayRadio" id="nextBirthday" value="next" checked="checked" />
+                      <label class="form-check-label" for="nextBirthday">
+                        Next Birthday
+                      </label>
+                    </div>
 
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">One Year</span>
-                        </div>
-                        <input type="number" name="year" min="1900" max="2100" class="form-control" placeholder="Year" aria-label="Year" aria-describedby="basic-addon1"/>
-                      </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="birthdayRadio" id="recurringBirthday" value="recurring" />
+                      <label class="form-check-label" for="recurringBirthday">
+                        Recurring (Download <a href="https://en.wikipedia.org/wiki/ICalendar">iCalendar</a> file)
+                      </label>
+                    </div>
 
-                      <div class="input-group mb-3">
-                        <div class="form-check">
-                          <input disabled="disabled" type="checkbox" class="form-check-input" id="allYears" name="allYears" />
-                          <label class="form-check-label" for="allYears">All Years (Until 2100)</label>
-                        </div>
-                      </div>
-                    </fieldset>
+                    <div class="input-group mb-3" id="personNameDiv" style="display:none;">
+                      <input type="text" class="form-control" id="personName" placeholder="Person's name (required)" aria-label="personName" aria-describedby="personName" />
+                    </div>
                   </form>
-                  <button id="birthday-submit" class="btn btn-primary">Submit</button>
+
+                  <button id="birthday-submit" class="btn btn-primary submit">Calculate</button>
                   <div id="single-birthday-result" style="display:none;">
                     <p>The next gregorian birthday is&nbsp;<span class="result"></span></p>
                   </div>

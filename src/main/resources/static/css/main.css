@@ -21,6 +21,10 @@ body {
   padding-top: 8px;
 }
 
+.submit {
+  margin-top: 20px;
+}
+
 .btn-primary {
   background-color: #9068be;
   border-color: #9068be;
