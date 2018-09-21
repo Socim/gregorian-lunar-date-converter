@@ -25,7 +25,7 @@ public class DateConverterService {
   @Autowired
   private DateRepository dateRepository;
 
-  public List<String> getGregorianBirthdays(int month, int day) {
+  public List<String> getGregorianBirthdays(String month, int day) {
     List<Timestamp> timestamps = dateRepository.getGregorianBirthdays(month, day, false);
 
     return timestamps.stream()
@@ -33,7 +33,7 @@ public class DateConverterService {
         .collect(Collectors.toList());
   }
 
-  public String getGregorianBirthdaysICalendar(int month, int day, String birthdayPerson) {
+  public String getGregorianBirthdaysICalendar(String month, int day, String birthdayPerson) {
     List<Timestamp> timestamps = dateRepository.getGregorianBirthdays(month, day, true);
 
     // TODO: write out to an output stream

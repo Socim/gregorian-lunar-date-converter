@@ -33,3 +33,7 @@ body {
 .btn-link {
   color: #9068be;
 }
+
+.leap-checkbox {
+  padding-left: 1.75rem;
+}

@@ -17,14 +17,14 @@ public class BirthdayController {
   DateConverterService dateConverterService;
 
   @GetMapping(value = "/birthday/{month}/{day}")
-  public List<String> calculateBirthday(@PathVariable int month,
+  public List<String> calculateBirthday(@PathVariable String month,
                                         @PathVariable int day) {
     return dateConverterService.getGregorianBirthdays(month, day);
   }
 
   @GetMapping(value = "/ical/birthday/{month}/{day}")
   @ResponseBody
-  public void calculateBirthdayICalendar(@PathVariable int month,
+  public void calculateBirthdayICalendar(@PathVariable String month,
                                          @PathVariable int day,
                                          @RequestParam String birthdayPerson,
                                          HttpServletResponse response)

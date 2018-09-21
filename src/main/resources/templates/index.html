@@ -54,6 +54,17 @@
                         <option value="11">November</option>
                         <option value="12">December</option>
                       </select>
+                      <div class="form-check leap-checkbox">
+                        <input type="checkbox" class="form-check-input" id="leap" name="leap" />
+                        <label class="form-check-label">
+                          <a href="#" id="leap-popover" data-container="body" data-toggle="popover" data-placement="bottom"
+                             data-content="Similar to a leap year in the Gregorian calendar, a leap month with the same
+name as the previous month is added to keep the lunar New Year in its proper position in the lunar calendar. For the
+purposes of this calculator, someone born in a leap month will have a birthday only when that leap month reappears.">
+                            Leap Month?
+                          </a>
+                        </label>
+                      </div>
                     </div>
 
                     <div class="input-group mb-3">
@@ -63,28 +74,31 @@
                       <input type="number" name="day" min="1" max="31" class="form-control" aria-describedby="basic-addon3" />
                     </div>
 
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="birthdayRadio" id="nextBirthday" value="next" checked="checked" />
-                      <label class="form-check-label" for="nextBirthday">
-                        Next Birthday
-                      </label>
-                    </div>
+                    <fieldset>
+                      <legend><h6>Find</h6></legend>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="birthdayRadio" id="nextBirthday" value="next" checked="checked" />
+                        <label class="form-check-label" for="nextBirthday">
+                          Next Birthday
+                        </label>
+                      </div>
 
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="birthdayRadio" id="recurringBirthday" value="recurring" />
-                      <label class="form-check-label" for="recurringBirthday">
-                        Recurring (Download <a href="https://en.wikipedia.org/wiki/ICalendar">iCalendar</a> file)
-                      </label>
-                    </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="birthdayRadio" id="recurringBirthday" value="recurring" />
+                        <label class="form-check-label" for="recurringBirthday">
+                          Recurring (Download <a href="https://en.wikipedia.org/wiki/ICalendar">iCalendar</a> file)
+                        </label>
+                      </div>
 
-                    <div class="input-group mb-3" id="personNameDiv" style="display:none;">
-                      <input type="text" class="form-control" id="personName" placeholder="Person's name (required)" aria-label="personName" aria-describedby="personName" />
-                    </div>
+                      <div class="input-group mb-3" id="personNameDiv" style="display:none;">
+                        <input type="text" class="form-control" id="personName" placeholder="Person's name (required)" aria-label="personName" aria-describedby="personName" />
+                      </div>
+                    </fieldset>
                   </form>
 
                   <button id="birthday-submit" class="btn btn-primary submit">Calculate</button>
                   <div id="single-birthday-result" style="display:none;">
-                    <p>The next gregorian birthday is&nbsp;<span class="result"></span></p>
+                    <p><span class="result"></span></p>
                   </div>
                   <div id="multiple-birthday-result">
 

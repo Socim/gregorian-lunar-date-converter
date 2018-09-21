@@ -14,7 +14,7 @@ public class DateRepository implements com.keeley.lunarconverter.repository.Date
   JdbcTemplate jdbcTemplate;
 
   @Override
-  public List<Timestamp> getGregorianBirthdays(int l_month, int l_day, boolean allYears) {
+  public List<Timestamp> getGregorianBirthdays(String l_month, int l_day, boolean allYears) {
 
     String sql =
         "SELECT dates.g_date " +
@@ -32,7 +32,7 @@ public class DateRepository implements com.keeley.lunarconverter.repository.Date
         "WHERE ? OR row_num=1";
 
     return jdbcTemplate.queryForList(sql, Timestamp.class,
-        l_day, String.valueOf(l_month), allYears);
+        l_day, l_month, allYears);
   }
 
 }
