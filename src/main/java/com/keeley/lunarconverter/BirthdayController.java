@@ -30,9 +30,6 @@ public class BirthdayController {
                                          HttpServletResponse response)
       throws IOException {
 
-    // TODO: get from user. configure what the birthday message will say
-    birthdayPerson = "Tony";
-
     String iCalendarFileContents = dateConverterService.getGregorianBirthdaysICalendar(month, day, birthdayPerson);
 
     response.setContentType("text/calendar");
