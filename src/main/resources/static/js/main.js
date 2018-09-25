@@ -3,17 +3,19 @@ var Birthday = {
   init: function() {
     var currentMonth = (new Date()).getMonth() + 1;
     var currentDay = (new Date()).getDate();
+    var currentYear = (new Date()).getFullYear();
 
     $("[name='month']").val(currentMonth);
     $("[name='day']").val(currentDay);
+    $('[name="year"]').val(currentYear);
 
     $("#nextBirthday").prop("checked", true);
 
     // Register event handlers
     $("#birthday-submit").click(function() {
-      var day = $("[name='day']").val();
-      var leap = ($("#leap").prop("checked") ? "L" : "");
-      var month = $("[name='month']").val() + leap;
+      var day = $("#birthday-form [name='day']").val();
+      var leap = ($("#birthday-form #leap").prop("checked") ? "L" : "");
+      var month = $("#birthday-form [name='month']").val() + leap;
 
       if ($("#recurringBirthday").prop("checked") &&
           $("#personName").val() !== "") {
@@ -27,8 +29,29 @@ var Birthday = {
       $("#personNameDiv").toggle();
     });
 
+    $("#greg-to-lunar-submit").click(function() {
+      var day = $("#greg-to-lunar-form [name='day']").val();
+      var month = $("#greg-to-lunar-form [name='month']").val();
+      var year = $("#greg-to-lunar-form [name='year']").val();
+
+      $.get("/date/lunar/" + year + "/" + month + "/" + day)
+        .done(function(data){
+          var result;
+          if (data == "") {
+            result = "Something went wrong."
+          } else {
+            result = "The lunar date is: " + data;
+          }
+
+          $("#greg-to-lunar-result .result").html(result);
+          $("#greg-to-lunar-result").slideDown("slow", function() { });
+        });
+
+
+    });
+
     // Register popover
-    $("#leap-popover").popover();
+    $(".popover-btn").popover();
   },
 
   getBirthday: function(month, day) {
