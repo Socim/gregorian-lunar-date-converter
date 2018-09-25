@@ -9,4 +9,6 @@ public interface DateRepository {
   List<Timestamp> getGregorianBirthdays(String l_month, int l_day, boolean allYears);
 
   LunarDate getLunarDateFromGregorian(Timestamp timestamp);
+
+  Timestamp getGregorianDateFromLunar(int year, String month, int day);
 }

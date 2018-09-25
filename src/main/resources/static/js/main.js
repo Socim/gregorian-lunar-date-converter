@@ -14,7 +14,7 @@ var Birthday = {
     // Register event handlers
     $("#birthday-submit").click(function() {
       var day = $("#birthday-form [name='day']").val();
-      var leap = ($("#birthday-form #leap").prop("checked") ? "L" : "");
+      var leap = ($("#birthday-form [name='leap']").prop("checked") ? "L" : "");
       var month = $("#birthday-form [name='month']").val() + leap;
 
       if ($("#recurringBirthday").prop("checked") &&
@@ -46,8 +46,26 @@ var Birthday = {
           $("#greg-to-lunar-result .result").html(result);
           $("#greg-to-lunar-result").slideDown("slow", function() { });
         });
+    });
 
+    $("#lunar-to-greg-submit").click(function() {
+      var day = $("#lunar-to-greg-form [name='lday']").val();
+      var leap = ($("#lunar-to-greg-form [name='leap']").prop("checked") ? "L" : "");
+      var month = $("#lunar-to-greg-form [name='lmonth']").val() + leap;
+      var year = $("#lunar-to-greg-form [name='lyear']").val();
 
+      $.get("/date/gregorian/" + year + "/" + month + "/" + day)
+        .done(function(data){
+          var result;
+          if (data == "") {
+            result = "Something went wrong. Is your date valid?"
+          } else {
+            result = "The gregorian date is: " + data;
+          }
+
+          $("#lunar-to-greg-result .result").html(result);
+          $("#lunar-to-greg-result").slideDown("slow", function() { });
+        });
     });
 
     // Register popover

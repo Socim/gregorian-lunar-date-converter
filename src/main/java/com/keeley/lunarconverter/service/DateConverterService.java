@@ -26,10 +26,13 @@ public class DateConverterService {
   @Autowired
   private DateRepository dateRepository;
 
+  public LunarDate getLunarDate(int year, int month, int day) {
+    return dateRepository.getLunarDateFromGregorian(createTimestamp(year, month, day));
+  }
 
-  public String getLunarDate(int year, int month, int day) {
-    LunarDate lunarDate = dateRepository.getLunarDateFromGregorian(createTimestamp(year, month, day));
-    return lunarDate.toDateString();
+  public String getGregorianDate(int year, String month, int day) {
+    Timestamp timestamp = dateRepository.getGregorianDateFromLunar(year, month, day);
+    return convertTimestampToDateString(timestamp);
   }
 
   public List<String> getGregorianBirthdays(String month, int day) {
@@ -65,6 +68,10 @@ public class DateConverterService {
   }
 
   protected String convertTimestampToDateString(Timestamp timestamp) {
+    if (timestamp == null) {
+      return "";
+    }
+
     LocalDate localDate = timestamp.toLocalDateTime().toLocalDate();
     return DATE_TIME_FORMATTER.format(localDate);
   }

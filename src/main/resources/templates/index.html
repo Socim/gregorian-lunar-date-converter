@@ -57,7 +57,7 @@
                       <div class="form-check leap-checkbox">
                         <input type="checkbox" class="form-check-input" id="leap" name="leap" />
                         <label class="form-check-label">
-                          <a href="#" class="popover-btn" id="leap-popover" data-container="body" data-toggle="popover" data-placement="bottom"
+                          <a href="#" class="popover-btn" data-container="body" data-toggle="popover" data-placement="bottom"
                              data-content="Similar to a leap year in the Gregorian calendar, a leap month with the same
 name as the previous month is added to keep the lunar New Year in its proper position in the lunar calendar. For the
 purposes of this calculator, someone born in a leap month will have a birthday only when that leap month reappears.">
@@ -176,7 +176,47 @@ supposedly invented, in 2637 BCE.">
               </div>
               <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                 <div class="card-body">
-                  Coming soon
+                  <form id="lunar-to-greg-form">
+                    <h6>Given a lunar date, find the matching gregorian date.</h6>
+                    <br/>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Month</span>
+                      </div>
+                      <input type="number" name="lmonth" th:value="${lmonth}" min="1" max="12" class="form-control" aria-describedby="basic-addon3" />
+                      <div class="form-check leap-checkbox">
+                        <input type="checkbox" class="form-check-input" name="leap" />
+                        <label class="form-check-label">
+                          <a href="#" class="popover-btn" data-container="body" data-toggle="popover" data-placement="bottom"
+                             data-content="Similar to a leap year in the Gregorian calendar, a leap month with the same
+name as the previous month is added to keep the lunar New Year in its proper position in the lunar calendar. For the
+purposes of this calculator, someone born in a leap month will have a birthday only when that leap month reappears.">
+                            Leap Month?
+                          </a>
+                        </label>
+                      </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Day</span>
+                      </div>
+                      <input type="number" name="lday" th:value="${lday}" min="1" max="30" class="form-control" aria-describedby="basic-addon3" />
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Year</span>
+                      </div>
+                      <input type="number" name="lyear" th:value="${lyear}" min="4598" max="4797" class="form-control" placeholder="Year" aria-label="Year" aria-describedby="basic-addon1"/>
+                    </div>
+
+                  </form>
+
+                  <button id="lunar-to-greg-submit" class="btn btn-primary submit">Calculate</button>
+                  <div id="lunar-to-greg-result" style="display:none;">
+                    <p><span class="result"></span></p>
+                  </div>
                 </div>
               </div>
             </div>

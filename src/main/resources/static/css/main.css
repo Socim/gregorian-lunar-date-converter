@@ -3,7 +3,8 @@
 }
 
 #single-birthday-result,
-#greg-to-lunar-result  {
+#greg-to-lunar-result,
+#lunar-to-greg-result {
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -41,6 +42,6 @@ body {
 
 .year-explanation {
   font-style: italic;
-  font-size: .5em;
+  font-size: .75em;
   cursor: pointer;
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -45,6 +46,22 @@ public class DateRepository implements com.keeley.lunarconverter.repository.Date
         "WHERE g_date = ?";
 
     return jdbcTemplate.query(sql, new Object[] {timestamp}, new LunarDateExtractor());
+  }
+
+  @Override
+  public Timestamp getGregorianDateFromLunar(int year, String month, int day) {
+    String sql =
+        "SELECT g_date " +
+        "FROM lookup " +
+        "WHERE l_year = ? AND l_month = ? AND l_day = ?";
+
+    List<Timestamp> result = jdbcTemplate.queryForList(sql, Timestamp.class, year, month, day);
+
+    if (result.size() > 0) {
+      return result.get(0);
+    }
+
+    return null;
   }
 
 }
