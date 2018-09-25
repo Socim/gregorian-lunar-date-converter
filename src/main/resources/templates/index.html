@@ -57,7 +57,7 @@
                       <div class="form-check leap-checkbox">
                         <input type="checkbox" class="form-check-input" id="leap" name="leap" />
                         <label class="form-check-label">
-                          <a href="#" id="leap-popover" data-container="body" data-toggle="popover" data-placement="bottom"
+                          <a href="#" class="popover-btn" id="leap-popover" data-container="body" data-toggle="popover" data-placement="bottom"
                              data-content="Similar to a leap year in the Gregorian calendar, a leap month with the same
 name as the previous month is added to keep the lunar New Year in its proper position in the lunar calendar. For the
 purposes of this calculator, someone born in a leap month will have a birthday only when that leap month reappears.">
@@ -100,9 +100,6 @@ purposes of this calculator, someone born in a leap month will have a birthday o
                   <div id="single-birthday-result" style="display:none;">
                     <p><span class="result"></span></p>
                   </div>
-                  <div id="multiple-birthday-result">
-
-                  </div>
                 </div>
               </div>
             </div>
@@ -116,8 +113,57 @@ purposes of this calculator, someone born in a leap month will have a birthday o
               </div>
               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                 <div class="card-body">
-                  Coming soon
+                  <form id="greg-to-lunar-form">
+                    <h6>Given a Gregorian date, find the matching lunar date.</h6>
+                    <br/>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Month</span>
+                      </div>
+                      <select name="month" class="form-control" aria-describedby="basic-addon3">
+                        <option value="0">Choose</option>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                      </select>
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Day</span>
+                      </div>
+                      <input type="number" name="day" min="1" max="31" class="form-control" aria-describedby="basic-addon3" />
+                    </div>
+
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Year</span>
+                      </div>
+                      <input type="number" name="year" min="1900" max="2100" class="form-control" placeholder="Year" aria-label="Year" aria-describedby="basic-addon1"/>
+                    </div>
+
+                  </form>
+
+                  <button id="greg-to-lunar-submit" class="btn btn-primary submit">Calculate</button>
+                  <div id="greg-to-lunar-result" style="display:none;">
+                    <p><span class="result"></span></p>
+                    <p><span class ="year-explanation popover-btn" data-container="body" data-toggle="popover" data-placement="bottom"
+                             data-content="Different epoch years are used with the Chinese (lunar) calendar. We used the
+beginning of the Huángdì era (黄帝紀年), which started in 2697 BCE. Another common epoch is the year the calendar was
+supposedly invented, in 2637 BCE.">
+                      What year is that?</span></p>
+                  </div>
                 </div>
+
               </div>
             </div>
             <div class="card">

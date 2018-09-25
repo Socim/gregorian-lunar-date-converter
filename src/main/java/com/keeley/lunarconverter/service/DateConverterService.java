@@ -5,6 +5,7 @@ import biweekly.ICalendar;
 import biweekly.component.VEvent;
 import biweekly.property.Summary;
 import biweekly.util.Duration;
+import com.keeley.lunarconverter.domain.LunarDate;
 import com.keeley.lunarconverter.repository.postgres.DateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,12 @@ public class DateConverterService {
   @Autowired
   private DateRepository dateRepository;
 
+
+  public String getLunarDate(int year, int month, int day) {
+    LunarDate lunarDate = dateRepository.getLunarDateFromGregorian(createTimestamp(year, month, day));
+    return lunarDate.toDateString();
+  }
+
   public List<String> getGregorianBirthdays(String month, int day) {
     List<Timestamp> timestamps = dateRepository.getGregorianBirthdays(month, day, false);
 
@@ -35,9 +42,6 @@ public class DateConverterService {
 
   public String getGregorianBirthdaysICalendar(String month, int day, String birthdayPerson) {
     List<Timestamp> timestamps = dateRepository.getGregorianBirthdays(month, day, true);
-
-    // TODO: write out to an output stream
-
     return Biweekly.write(createICalendar(timestamps, birthdayPerson)).go();
   }
 
@@ -52,8 +56,6 @@ public class DateConverterService {
     Summary summary = event.setSummary(birthdayPerson + EVENT_SUFFIX);
     summary.setLanguage("en-us");
 
-    // TODO: timezone?
-
     event.setDateStart(new Date(timestamp.getTime()), false);
 
     Duration duration = new Duration.Builder().days(1).build();
@@ -65,6 +67,10 @@ public class DateConverterService {
   protected String convertTimestampToDateString(Timestamp timestamp) {
     LocalDate localDate = timestamp.toLocalDateTime().toLocalDate();
     return DATE_TIME_FORMATTER.format(localDate);
+  }
+
+  protected Timestamp createTimestamp(int year, int month, int day) {
+    return new Timestamp(year-1900, month-1, day, 0, 0 ,0, 0);
   }
 
 }

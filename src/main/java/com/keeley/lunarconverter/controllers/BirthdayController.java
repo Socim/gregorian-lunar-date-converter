@@ -1,4 +1,4 @@
-package com.keeley.lunarconverter;
+package com.keeley.lunarconverter.controllers;
 
 import com.keeley.lunarconverter.service.DateConverterService;
 import org.springframework.beans.factory.annotation.Autowired;

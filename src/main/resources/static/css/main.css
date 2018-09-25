@@ -1,8 +1,9 @@
-#collapseOne .input-group-text {
+.input-group-text {
   width: 100px;
 }
 
-#single-birthday-result {
+#single-birthday-result,
+#greg-to-lunar-result  {
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -36,4 +37,10 @@ body {
 
 .leap-checkbox {
   padding-left: 1.75rem;
+}
+
+.year-explanation {
+  font-style: italic;
+  font-size: .5em;
+  cursor: pointer;
 }

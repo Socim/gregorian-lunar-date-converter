@@ -1,5 +1,7 @@
 package com.keeley.lunarconverter.repository.postgres;
 
+import com.keeley.lunarconverter.domain.LunarDate;
+import com.keeley.lunarconverter.repository.LunarDateExtractor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -33,6 +35,16 @@ public class DateRepository implements com.keeley.lunarconverter.repository.Date
 
     return jdbcTemplate.queryForList(sql, Timestamp.class,
         l_day, l_month, allYears);
+  }
+
+  @Override
+  public LunarDate getLunarDateFromGregorian(Timestamp timestamp) {
+    String sql =
+        "SELECT l_year, l_month, l_day " +
+        "FROM lookup " +
+        "WHERE g_date = ?";
+
+    return jdbcTemplate.query(sql, new Object[] {timestamp}, new LunarDateExtractor());
   }
 
 }
