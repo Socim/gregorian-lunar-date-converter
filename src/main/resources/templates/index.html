@@ -5,17 +5,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="Calculate birthdays for lunar birthdates and import them to your calendar app! Convert between the lunar and Gregorian calendar." />
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" />
 
-    <title>Convert Lunar to Gregorian Birthday - MoonBirthday</title>
+    <title>Lunar Birthday Calculator | MoonBirthday.info</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
       <!--<img class="moon-ico" src="moon-cal.png" height="40" width="40"/>-->
       <a class="navbar-brand" href="#">MoonBirthday.info</a>
-      <span class="desc">Find gregorian birthdays for lunar birth dates.</span>
+      <span class="desc">Calculate Gregorian birthdays for lunar birthdates.</span>
     </nav>
 
     <main role="main" class="container">
@@ -226,20 +227,20 @@ the leap month is not present.">
                   <br/>
                   <h5>Why did you write this?</h5>
                   <p>
-                    Like all good ideas, this project developed out of a desire to make my life easier. Specifically, the need to remember my in-law's birthdays. Even though my in-laws use the Gregorian calendar in their everyday lives, they celebrate the their birthdays on the days that coincide with their lunar or Chinese calendar birthdates. Naively, I assumed this would be the same Gregorian date every year. Too easy. The <a href="https://en.wikipedia.org/wiki/Chinese_calendar">Chinese calendar</a>, similar to other East Asian calendars, is based on the cycles of the moon. Months vary in length and there is the concept of a leap month; kind of like the leap year on the Gregorian calendar. The reasoning behind this is to keep the position of the New Year within an acceptable range of dates, since a normal lunar year contains 354 days.
+                    Like all good ideas, this project developed out of a desire to make my life easier. Specifically, the need to remember my in-law's birthdays. Even though my in-laws use the Gregorian calendar in their everyday lives, they celebrate the their birthdays on the days that coincide with their lunar or Chinese calendar birthdates. Naively, I assumed this would be the same Gregorian date every year. Too easy. The <a href="https://en.wikipedia.org/wiki/Chinese_calendar">Chinese calendar</a>, similar to other East and Southeast Asian calendars (Japan, Korea, Vietnam, etc.), is based on the cycles of the moon. Months vary in length and there is the concept of a leap month; kind of like the leap year on the Gregorian calendar. The reasoning behind this is to keep the position of the New Year within an acceptable range of dates, since a normal lunar year contains 354 days.
                   </p>
                   <p>
                     So in order to solve this problem, I would need a way to calculate this Gregorian date for all successive years. And because I'm lazy, I didn't want to have to put all of those dates in my calendar.
                   </p>
                   <p>
-                    Calculators for lunar and Gregorian dates exist, but none that I could find on the English-speaking internet found "birthdays", exactly. And none of these tools generated an iCalendar file for import into Google Calendar or another calendar tool. Once I got the dataset (thanks, <a href="http://www.hko.gov.hk/gts/time/conversion.htm">Hong Kong observatory</a>!) and created the tool, I figured, why not share it with everyone else? Surely, I'm not the only person with this problem.
+                    Calculators for lunar and Gregorian dates exist, but none that I could find on the English-speaking internet found "lunar birthdays", exactly. And none of these tools generated an iCalendar file for import into Google Calendar or another calendar tool. Once I got the dataset (thanks, <a href="http://www.hko.gov.hk/gts/time/conversion.htm">Hong Kong observatory</a>!) and created the tool, I figured, why not share it with everyone else? Surely, I'm not the only person with this problem.
                   </p>
                   <p>If you want to do something similar or would like to fork this project, please check it out on GitHub:</p>
                   <ul>
                     <li><a href="https://github.com/keeleyt83/gregorian-to-lunar-dataset">Dataset</a></li>
                     <li><a href="https://github.com/keeleyt83/gregorian-lunar-date-converter">Web application</a></li>
                   </ul>
-                  <p>Or if this application has changed your life, feel free to send me some <a href="http://paypal.me/tonykeeley">beer money</a>.</p>
+                  <p>Or if this lunar converter tool has changed your life, feel free to send me some <a href="http://paypal.me/tonykeeley">beer money</a>.</p>
                 </div>
               </div>
             </div>
