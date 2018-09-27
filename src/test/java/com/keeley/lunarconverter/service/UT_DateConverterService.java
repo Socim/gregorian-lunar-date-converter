@@ -1,43 +1,40 @@
 package com.keeley.lunarconverter.service;
 
-import com.keeley.lunarconverter.repository.postgres.DateRepository;
-import mockit.Expectations;
-import mockit.Injectable;
-import mockit.Mocked;
-import mockit.Tested;
-import mockit.integration.junit4.JMockit;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import java.sql.Timestamp;
-import java.util.Arrays;
-import java.util.List;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
-@RunWith(JMockit.class)
 public class UT_DateConverterService {
   private static long DATE_MILLIS = 1522213200000L; // 3.28.2018
 
-  @Injectable
-  private DateRepository dateRepository;
-  //@Injectable
-  //private RandomUidGenerator randomUidGenerator;
-  @Tested
-  private DateConverterService service; // = new DateConverterService();
+  private DateConverterService service = new DateConverterService();
 
   @Test
-  public void createICalFromTimestamps(){
-//    new Expectations() {{
-//      randomUidGenerator.generateUid();
-//      result = new Uid("1A");
-//    }};
+  public void createTimestamp() {
+    Timestamp expected = new Timestamp(DATE_MILLIS);
+    assertEquals(expected, service.createTimestamp(2018, 3, 28));
+  }
 
-//    List<Timestamp> timestamps = Arrays.asList(new Timestamp(DATE_MILLIS));
-//
-//    Calendar calendar = service.createICalFromTimestamps(timestamps, "Tony");
-//
-//    assertNotNull(calendar);
+  @Test
+  public void convertTimestampToDateString_null() {
+    assertEquals("", service.convertTimestampToDateString(null));
+  }
+
+  @Test
+  public void convertTimestampToDateString() {
+    assertEquals("Wednesday, March 28, 2018", service.convertTimestampToDateString(new Timestamp(DATE_MILLIS)));
+  }
+
+  @Test
+  public void isLeapMonth() {
+    assertTrue(service.isLeapMonth("4L"));
+  }
+
+  @Test
+  public void isLeapMonth_nope() {
+    assertFalse(service.isLeapMonth("4"));
   }
 
 }

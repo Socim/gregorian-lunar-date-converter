@@ -9,7 +9,6 @@ import com.keeley.lunarconverter.domain.LunarDate;
 import com.keeley.lunarconverter.repository.postgres.DateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.thymeleaf.util.StringUtils;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
