@@ -9,10 +9,12 @@ import com.keeley.lunarconverter.domain.LunarDate;
 import com.keeley.lunarconverter.repository.postgres.DateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.util.StringUtils;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,19 +38,32 @@ public class DateConverterService {
   }
 
   public List<String> getGregorianBirthdays(String month, int day) {
-    List<Timestamp> timestamps = dateRepository.getGregorianBirthdays(month, day, false);
-
+    Collection<Timestamp> timestamps = getBirthdays(month, day, false);
     return timestamps.stream()
         .map(this::convertTimestampToDateString)
         .collect(Collectors.toList());
   }
 
   public String getGregorianBirthdaysICalendar(String month, int day, String birthdayPerson) {
-    List<Timestamp> timestamps = dateRepository.getGregorianBirthdays(month, day, true);
+    Collection<Timestamp> timestamps = getBirthdays(month, day, true);
     return Biweekly.write(createICalendar(timestamps, birthdayPerson)).go();
   }
 
-  protected ICalendar createICalendar(List<Timestamp> timestamps, String birthdayPerson) {
+  protected Collection<Timestamp> getBirthdays(String month, int day, boolean allYears) {
+    if (isLeapMonth(month)) {
+      return dateRepository.getGregorianBirthdaysBornLeapMonth(month, day, allYears);
+    } else if (day == 30) {
+      return dateRepository.getGregorianBirthdaysBornThirtieth(month, day, allYears);
+    } else {
+      return dateRepository.getGregorianBirthdays(month, day, allYears);
+    }
+  }
+
+  protected boolean isLeapMonth(String month) {
+    return month.contains("L");
+  }
+
+  protected ICalendar createICalendar(Collection<Timestamp> timestamps, String birthdayPerson) {
     ICalendar ical = new ICalendar();
     timestamps.forEach((t) -> ical.addEvent(createEventForBirthday(t, birthdayPerson)));
     return ical;

@@ -60,7 +60,7 @@ var Birthday = {
           if (data == "") {
             result = "Something went wrong. Is your date valid?"
           } else {
-            result = "The gregorian date is: " + data;
+            result = "The gregorian date is " + data;
           }
 
           $("#lunar-to-greg-result .result").html(result);
