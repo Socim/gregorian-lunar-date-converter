@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
     <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" />
 
-    <title>Lunar to Gregorian Date Converter</title>
+    <title>Convert Lunar to Gregorian Birthday - MoonBirthday</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
       <!--<img class="moon-ico" src="moon-cal.png" height="40" width="40"/>-->
       <a class="navbar-brand" href="#">MoonBirthday.info</a>
-      <span class="desc">Find gregorian birthdays for lunar birthdates.</span>
+      <span class="desc">Find gregorian birthdays for lunar birth dates.</span>
     </nav>
 
     <main role="main" class="container">
@@ -34,7 +34,9 @@
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                 <div class="card-body">
                   <form id="birthday-form">
-                    <h6>Given a lunar birthdate, calculate one or more Gregorian birthdays.</h6>
+                    <h6>Given a lunar birthdate, calculate one or more Gregorian birthdays.<br/>
+                      Enter the lunar birthdate month and day. We return you the Gregorian birthday for that lunar birthdate.
+                    </h6>
                     <br/>
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
@@ -45,7 +47,7 @@
                         <input type="checkbox" class="form-check-input" id="leap" name="leap" />
                         <label class="form-check-label">
                           <a href="#" class="popover-btn" data-container="body" data-toggle="popover" data-placement="bottom"
-                             data-content="Similar to a leap year in the Gregorian calendar, a leap month with the same
+                             data-content="Similar to a leap year in the Gregorian calendar, as there are only 354 days in a normal lunar year, a leap month with the same
 name as the previous month is added to keep the lunar New Year in its proper position in the lunar calendar. For the
 purposes of this calculator, someone born in a leap month will have a birthday on the same day in the preceding month if
 the leap month is not present.">
@@ -176,8 +178,10 @@ supposedly invented, in 2637 BCE.">
                         <input type="checkbox" class="form-check-input" name="leap" />
                         <label class="form-check-label">
                           <a href="#" class="popover-btn" data-container="body" data-toggle="popover" data-placement="bottom"
-                             data-content="Similar to a leap year in the Gregorian calendar, a leap month with the same
-name as the previous month is added to keep the lunar New Year in its proper position in the lunar calendar.">
+                             data-content="Similar to a leap year in the Gregorian calendar, as there are only 354 days in a normal lunar year, a leap month with the same
+name as the previous month is added to keep the lunar New Year in its proper position in the lunar calendar. For the
+purposes of this calculator, someone born in a leap month will have a birthday on the same day in the preceding month if
+the leap month is not present.">
                             Leap Month?
                           </a>
                         </label>
@@ -204,6 +208,38 @@ name as the previous month is added to keep the lunar New Year in its proper pos
                   <div id="lunar-to-greg-result" style="display:none;">
                     <p><span class="result"></span></p>
                   </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingFour">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    About
+                  </button>
+                </h5>
+              </div>
+
+              <div id="collapseFour" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body about-div">
+                  <h3>Welcome!</h3>
+                  <br/>
+                  <h5>Why did you write this?</h5>
+                  <p>
+                    Like all good ideas, this project developed out of a desire to make my life easier. Specifically, the need to remember my in-law's birthdays. Even though my in-laws use the Gregorian calendar in their everyday lives, they celebrate the their birthdays on the days that coincide with their lunar or Chinese calendar birthdates. Naively, I assumed this would be the same Gregorian date every year. Too easy. The <a href="https://en.wikipedia.org/wiki/Chinese_calendar">Chinese calendar</a>, similar to other East Asian calendars, is based on the cycles of the moon. Months vary in length and there is the concept of a leap month; kind of like the leap year on the Gregorian calendar. The reasoning behind this is to keep the position of the New Year within an acceptable range of dates, since a normal lunar year contains 354 days.
+                  </p>
+                  <p>
+                    So in order to solve this problem, I would need a way to calculate this Gregorian date for all successive years. And because I'm lazy, I didn't want to have to put all of those dates in my calendar.
+                  </p>
+                  <p>
+                    Calculators for lunar and Gregorian dates exist, but none that I could find on the English-speaking internet found "birthdays", exactly. And none of these tools generated an iCalendar file for import into Google Calendar or another calendar tool. Once I got the dataset (thanks, <a href="http://www.hko.gov.hk/gts/time/conversion.htm">Hong Kong observatory</a>!) and created the tool, I figured, why not share it with everyone else? Surely, I'm not the only person with this problem.
+                  </p>
+                  <p>If you want to do something similar or would like to fork this project, please check it out on GitHub:</p>
+                  <ul>
+                    <li><a href="https://github.com/keeleyt83/gregorian-to-lunar-dataset">Dataset</a></li>
+                    <li><a href="https://github.com/keeleyt83/gregorian-lunar-date-converter">Web application</a></li>
+                  </ul>
+                  <p>Or if this application has changed your life, feel free to send me some <a href="http://paypal.me/tonykeeley">beer money</a>.</p>
                 </div>
               </div>
             </div>
